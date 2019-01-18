@@ -4,6 +4,16 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+        Computer myImac = new Computer();
+        println(myImac);
+
+        Computer myLenovo = new Computer("Lenovo X1", "1TB");
+        println(myLenovo);
+
+        Computer myWorkLenovo = new Computer("Lenovo X1", "1TB");
+
+        test(myImac.equals(myLenovo) == false, "passed", "failed", "should return false");
+        test(myWorkLenovo.equals(myLenovo) == true, "passed", "failed", "should return true");
     public static void println(Object line) { System.out.println(line); }
     public static void print(Object line) { System.out.print(line); }
 
