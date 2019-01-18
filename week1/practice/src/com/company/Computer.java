@@ -32,3 +32,12 @@ public class Computer {
         this.memory = inputMemory;
     }
 }
+    @Override
+    public String toString() {
+        return String.format("Brand: " + this.brand + ", " + "Memory: " + this.memory);
+    }
+
+    public boolean equals(Computer inputComputer) {
+        return this.brand.equals(inputComputer.brand) && this.memory.equals(inputComputer.memory);
+    }
+}
