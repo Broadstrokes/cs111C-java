@@ -24,9 +24,40 @@ public class Main {
         test(myImac.equals(myLenovo) == false, "passed", "failed", "should return false");
         test(myWorkLenovo.equals(myLenovo) == true, "passed", "failed", "should return true");
 
+        println(isValidEmail("Ha.jim"));
+        println(isValidEmail("Haji"));
+        println(isValidEmail("@Haji"));
+        println(isValidEmail("Haji@"));
+        println(isValidEmail("@@Haji@."));
+
+
+        println(">>>>>>><<<<<<<<<<<<<<");
+
+
+        println(isValidEmail("a@g.cm"));
+        println(isValidEmail("agba.com"));
+        println(isValidEmail("a@g.comm"));
+        println(isValidEmail("a@g.com"));
     }
 
 
+    public static boolean isValidEmail(String input) {
+        int len = input.length();
+        final int numCharactersRequiredAfterPeriod = 3;
+
+        if (len < 7) {
+            return false;
+        } else if (
+            input.contains(".") &&
+            input.contains("@") &&
+            len - input.lastIndexOf(".") - 1  == numCharactersRequiredAfterPeriod
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
     public static boolean isEligibleForLoan(double income, double numYearsAtCurrentWorkPlace) {
