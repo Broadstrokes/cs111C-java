@@ -24,6 +24,62 @@ public class Main {
         test(myImac.equals(myLenovo) == false, "passed", "failed", "should return false");
         test(myWorkLenovo.equals(myLenovo) == true, "passed", "failed", "should return true");
 
+        UndergraduateStudent jimmy = new UndergraduateStudent("Jim", "Raynor", 11, false);
+        println(jimmy);
+
+        // ------------------------------ // ------------------------------ // ------------------------------
+
+        println(">>>>>>>>>Method 1<<<<<<<<<<<<");
+        Student e = new Student("jay", "ka", 10);
+        method1(e);
+        System.out.println(e.getStudentID());
+
+
+        println(">>>>>>>>>Method 2<<<<<<<<<<<<");
+//        int[] numbers = {0, 0, 0};
+//        method2(numbers);
+//
+//        System.out.println(numbers[1]);
+
+
+        println(">>>>>>>>>Method 3<<<<<<<<<<<<");
+        int[] numbers = {0, 0, 0};
+        method3(numbers);
+        System.out.println(numbers[1]);
+
+
+
+        Student p = new UndergraduateStudent("Daymond", "John", 333, true);
+        println(p.toString());
+
+        Object xavier = new Student("an", "be", 33);
+
+        Student[] parents = new Student[3];
+        parents[0] = new UndergraduateStudent("Can", "Can", 99);
+
+
+        // ------------------------------ // ------------------------------ // ------------------------------
+        Parcel amazonPrime = new Parcel("bn23", 33.4);
+        println(amazonPrime);
+
+
+        OvernightParcel fedex = new OvernightParcel("fedex44", 61.3, false);
+        println(fedex);
+
+//
+//        Parcel usps = new Parcel("bn23", 33.4);
+//        Parcel dhl = new Parcel("bn1234");
+//        System.out.println(usps.toString());
+//        System.out.println(dhl.toString());
+//
+//        println(">>>>>>>>>Parcels Equals<<<<<<<<<<<<");
+//
+//        println(usps.equals(amazonPrime));
+//        System.out.println(usps.equals(fedex));
+//        System.out.println(dhl.equals(usps));
+//
+
+
         println(isValidEmail("Ha.jim"));
         println(isValidEmail("Haji"));
         println(isValidEmail("@Haji"));
@@ -39,6 +95,26 @@ public class Main {
         println(isValidEmail("a@g.comm"));
         println(isValidEmail("a@g.com"));
     }
+
+    // ------------------------------ // ------------------------------ // ------------------------------
+
+    public static void method1(Student e) {
+        e.setStudentID(99);
+    }
+
+
+    public static void method2(int[] numbers) {
+        numbers[1] = 43;
+    }
+
+    public static void method3(int[] numbers) {
+        numbers = new int[3];
+        numbers[0] = 43;
+        numbers[1] = 43;
+        numbers[2] = 43;
+    }
+
+    // ------------------------------ // ------------------------------ // ------------------------------
 
 
     public static boolean isValidEmail(String input) {
