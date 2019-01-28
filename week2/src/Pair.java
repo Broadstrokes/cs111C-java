@@ -31,4 +31,28 @@ public class Pair<T> {
 		// return item1==item2; INCORRECT! tests for aliases, not logical equivalence
 	}
 
+	/**
+	 * Two Pair objects are logically equivalent if their two objects are
+	 * logically equivalent (ignoring order). For example, using this
+	 * definition, the Pair (1,2)  would be equal to the Pair (2,1)
+	 *
+	 * @param other
+	 * @return boolean if items are the same return true, else return false
+	 */
+	@Override
+	public boolean equals(Object other) {
+		if (other instanceof Pair<?>) {
+			Pair<?> otherPairR = (Pair<?>) other;
+
+			if (this.item1.equals(otherPairR.item1)) {
+				return this.item2.equals(otherPairR.item2);
+			} else if (this.item1.equals(otherPairR.item2)) {
+				return this.item2.equals(otherPairR.item1);
+			} else {
+				return false;
+			}
+		}
+
+		return false;
+	}
 }
