@@ -1,6 +1,6 @@
 package com.company;
 
-public class Student  implements Comparable<Student> {
+public class Student implements Comparable<Student> {
 
     private String firstName, lastName;
     private int studentID;

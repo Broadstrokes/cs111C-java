@@ -31,7 +31,7 @@ public class Computer {
         this.brand = inputBrand;
         this.memory = inputMemory;
     }
-}
+
     @Override
     public String toString() {
         return String.format("Brand: " + this.brand + ", " + "Memory: " + this.memory);
