@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Trio<T> {
     private T item1, item2, item3;
 
