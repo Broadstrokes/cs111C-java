@@ -261,6 +261,31 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
 		// YOUR HOMEWORK CODE HERE
 	}
    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AList<?>) {
+            AList<T> otherListParam = (AList<T>) obj;
+
+            if (otherListParam.getLength() != this.getLength()) {
+                return false;
+            } else if (otherListParam.getLength() == 0) {
+                return true;
+            } else {
+                for (int i = 1; i <= otherListParam.getLength(); i++) {
+                    T item1 = otherListParam.list[i];
+                    T item2 = this.list[i];
+
+                    if (!item1.equals(item2)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+
+        } else {
+            return false;
+        }
+    }
    
 } // end AList
 
