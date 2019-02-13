@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 /**
  A class that implements a list of objects by using an array.
@@ -256,11 +257,31 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
 		return lessThanList;
 	}
 
+	@SuppressWarnings("Duplicates")
 	public int removeEvery(T element) {
-		return 0;
-		// YOUR HOMEWORK CODE HERE
+        int count = 0;
+
+        ArrayList<Integer> indicesToRemove = new ArrayList<Integer>();
+
+        for(int i = 1; i <= numberOfEntries; i++) {
+            T entry = list[i];
+            if (entry.equals(element)) {
+                indicesToRemove.add(i);
+            }
+        }
+
+
+        for (int i = 0; i < indicesToRemove.size(); i++) {
+            System.out.println(indicesToRemove.toString());
+            count++;
+            this.remove(indicesToRemove.get(i) - count);
+        }
+
+        return count;
 	}
-   
+
+
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof AList<?>) {
