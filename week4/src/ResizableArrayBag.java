@@ -225,7 +225,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    
    
 	public void trimToSize() {
-		// YOUR HOMEWORK CODE HERE
+		bag = Arrays.copyOf(bag, numberOfEntries);
 	}
 } // end ResizableArrayBag
 
