@@ -1,7 +1,7 @@
 /**
  An interface that describes the operations of a Queue Stack combo;
  allowing a user to remove from add to either the front or the back
- & taking a peek at any position in the list. The list is 0 indexed
+ and taking a peek at any position in the list. The list is 0 indexed.
 
  @author Dan Sajjad
  @version 1.0
@@ -25,14 +25,14 @@ public interface HeadTailListInterface<T> {
     /**
      * Removes an entry from the front of the list.
      *
-     * @return T The entry at the front of the list.
+     * @return T A reference to the removed entry at the front of the list.
      */
     public T removeFront();
 
     /**
      * Removes an entry from the back of the list.
      *
-     * @return T The entry at the back of the list.
+     * @return T A reference to the removed entry at the back of the list.
      */
     public T removeBack();
 
@@ -41,7 +41,9 @@ public interface HeadTailListInterface<T> {
      * The list is 0 indexed.
      *
      * @param position An integer that indicates the position of the entry to get.
-     * @return
+     * @return A reference to the entry at the given index.
+     * @throws IndexOutOfBoundsException if either givenPosition is less than 0
+     * or givenPosition is greater than list's length - 1.
      */
     public T getEntry(int position);
 

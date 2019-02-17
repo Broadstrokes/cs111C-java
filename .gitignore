@@ -70,3 +70,4 @@ fabric.properties
 *.iml
 *workspace*
 *.zip
+*.html
