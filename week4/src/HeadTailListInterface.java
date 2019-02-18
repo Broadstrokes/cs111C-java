@@ -1,6 +1,6 @@
 /**
  An interface that describes the operations of a Queue Stack combo;
- allowing a user to remove from add to either the front or the back
+ allowing a user to remove from and add to either the front or the back
  and taking a peek at any position in the list. The list is 0 indexed.
 
  @author Dan Sajjad
@@ -57,7 +57,7 @@ public interface HeadTailListInterface<T> {
      * Tests whether this list contains a given entry.
      *
      * @param entry The entry to find.
-     * @return True if the bag contains the entry, or false if not.
+     * @return True if the list contains the entry, or false if not.
      */
     public int contains (T entry);
 
