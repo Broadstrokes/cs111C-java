@@ -25,14 +25,16 @@ public interface HeadTailListInterface<T> {
     /**
      * Removes an entry from the front of the list.
      *
-     * @return T A reference to the removed entry at the front of the list.
+     * @return T A reference to the removed entry at the front of the list if the removal
+     * was successful, or null.
      */
     public T removeFront();
 
     /**
      * Removes an entry from the back of the list.
      *
-     * @return T A reference to the removed entry at the back of the list.
+     * @return T A reference to the removed entry at the back of the list if the removal
+     * was successful, or null.
      */
     public T removeBack();
 
@@ -48,7 +50,7 @@ public interface HeadTailListInterface<T> {
     public T getEntry(int position);
 
     /**
-     * Prints the list.
+     * Prints the list to the console.
      *
      */
     public void display();
