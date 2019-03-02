@@ -1,4 +1,6 @@
+import javax.xml.soap.Node;
 import java.util.Arrays;
+import java.util.List;
 
 public class RecursionPracticeDriver {
     public static void main (String[] args) {
@@ -19,6 +21,17 @@ public class RecursionPracticeDriver {
             printEachCharacter(item, 0, item.length());
         }
 
+        printDashes();
+        println(" TEST print without extra params");
+        printDashes();
+
+
+        for(String item : testStrings) {
+            printDashes();
+            println(item);
+            printDashes();
+            printEachCharacter(item);
+        }
     }
 
 
@@ -46,6 +59,16 @@ public class RecursionPracticeDriver {
         } else {
             input[pointer] *= 2;
             doubleElementsInAnArray(input, pointer + 1, len);
+        }
+    }
+
+
+    public static void printEachCharacter(String input) {
+        if (input.length() == 0) {
+           println("End recursion");
+        } else {
+            println(input.charAt(0));
+            printEachCharacter(input.substring(1));
         }
     }
 
