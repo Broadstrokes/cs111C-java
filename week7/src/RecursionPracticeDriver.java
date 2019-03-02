@@ -63,8 +63,26 @@ public class RecursionPracticeDriver {
             println(Arrays.toString(array));
             printDashes();
         }
+
+        printDashes();
+        println(" TEST doubling array without having the user pass extra params");
+        printDashes();
+
+        for(int[] array : testArrays) {
+            printDashes();
+            println(Arrays.toString(array));
+            doubleElementsInAnArray(array);
+            println(Arrays.toString(array));
+            printDashes();
+        }
+
+
+
     }
 
+    public static void doubleElementsInAnArray(int[] input) {
+        doubleElementsInAnArray(input, 0, input.length);
+    }
 
     public static void doubleElementsInAnArray(int[] input, int pointer, int len) {
         if(pointer >= len)  {
