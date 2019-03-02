@@ -1,15 +1,26 @@
-public class MyM5Driver {
+public class RecursionPracticeDriver {
     public static void main (String[] args) {
-        println("******** Starting my driver for M5 ************");
+        printDashes();
+        printNameOfCurrMethod();
     }
+
+
 
     /*
         HELPER FUNCTIONS
-    */
+     */
 
     public static void println(Object line) { System.out.println(line); }
-
     public static void print(Object line) { System.out.print(line); }
+    public static void printDashes() { println( "----------------------------"); }
+    public static void printNameOfCurrMethod() {
+        String nameOfCurrMethod =
+                new Throwable()
+                        .getStackTrace()[1]
+                        .getMethodName();
+
+        println( "*********** Running: " + nameOfCurrMethod + " **************");
+    }
 
     /**
      * Function to test an expectation
@@ -27,4 +38,5 @@ public class MyM5Driver {
         else
             System.out.println(errorMessage);
     }
+
 }
