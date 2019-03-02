@@ -2,8 +2,35 @@ public class RecursionPracticeDriver {
     public static void main (String[] args) {
         printDashes();
         printNameOfCurrMethod();
+
+        testPrintCharacter();
+
     }
 
+
+    public static void testPrintCharacter() {
+        String[] testStrings = {"", "h", "hello", "hellow"};
+        for(String item : testStrings) {
+            printDashes();
+            println(item);
+            printDashes();
+            printEachCharacter(item, 0, item.length());
+        }
+
+    }
+
+
+
+
+    public static void printEachCharacter(String input, int pointer, int len) {
+        if (pointer == len) {
+            println("End recursion");
+        } else {
+            char curr = input.charAt(pointer);
+            println(curr);
+            printEachCharacter(input, pointer + 1, len);
+        }
+    }
 
 
     /*
