@@ -32,6 +32,19 @@ public class RecursionPracticeDriver {
             printDashes();
             printEachCharacter(item);
         }
+
+
+        printDashes();
+        println(" TEST print in reverse");
+        printDashes();
+
+        for(String item : testStrings) {
+            printDashes();
+            println(item);
+            printDashes();
+            printCharactersInReverse(item);
+        }
+
     }
 
 
@@ -62,6 +75,15 @@ public class RecursionPracticeDriver {
         }
     }
 
+    public static void printCharactersInReverse(String input) {
+        if (input.length() == 0) { println("End recursion"); }
+        else {
+            if (input.length() > 0) {
+                printCharactersInReverse(input.substring(1));
+            }
+            println(input.charAt(0));
+        }
+    }
 
     public static void printEachCharacter(String input) {
         if (input.length() == 0) {
