@@ -1,10 +1,12 @@
+import java.util.Arrays;
+
 public class RecursionPracticeDriver {
     public static void main (String[] args) {
         printDashes();
         printNameOfCurrMethod();
 
         testPrintCharacter();
-
+        testPrintDoubleArray();
     }
 
 
@@ -20,10 +22,35 @@ public class RecursionPracticeDriver {
     }
 
 
+    public static void testPrintDoubleArray() {
+        int[][] testArrays = {
+            {},
+            {100},
+            {1, 2, 3, 4},
+            {-1, -2, -3, -4, -55}
+        };
 
+        for(int[] array : testArrays) {
+            printDashes();
+            println(Arrays.toString(array));
+            doubleElementsInAnArray(array, 0, array.length);
+            println(Arrays.toString(array));
+            printDashes();
+        }
+    }
+
+
+    public static void doubleElementsInAnArray(int[] input, int pointer, int len) {
+        if(pointer >= len)  {
+            println("End recursion");
+        } else {
+            input[pointer] *= 2;
+            doubleElementsInAnArray(input, pointer + 1, len);
+        }
+    }
 
     public static void printEachCharacter(String input, int pointer, int len) {
-        if (pointer == len) {
+        if (pointer >= len) {
             println("End recursion");
         } else {
             char curr = input.charAt(pointer);
