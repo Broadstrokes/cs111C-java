@@ -82,6 +82,19 @@ public class RecursionPracticeDriver {
     }
 
 
+    public static void doubleList(List<Integer> list) {
+        doubleListHelper(list, 0);
+    }
+
+    public static void doubleListHelper(List<Integer> list, int index) {
+        if (index < list.size()) {
+            list.set(index, list.get(index) * 2);
+            doubleListHelper(list, index + 1);
+        }
+    }
+
+
+
     public static void testPrintEveryOther() {
         int[][] testArrays = {
                 {},
