@@ -9,6 +9,7 @@ public class RecursionPracticeDriver {
 
         testPrintCharacter();
         testPrintDoubleArray();
+        testPrintEveryOther();
     }
 
 
@@ -78,6 +79,36 @@ public class RecursionPracticeDriver {
 
 
 
+    }
+
+
+    public static void testPrintEveryOther() {
+        int[][] testArrays = {
+                {},
+                {100},
+                {1, 2, 3, 4},
+                {-1, -2, -3, -4, -55}
+        };
+
+        for(int[] array : testArrays) {
+            printDashes();
+            println(Arrays.toString(array));
+            printEveryOther(array);
+            printDashes();
+        }
+    }
+
+    public static void printEveryOther(int[] nums) {
+        printEveryOtherRecurser(nums, 0);
+    }
+
+    public static void printEveryOtherRecurser(int[] nums, int pointer) {
+        if (pointer >= nums.length) {
+            System.out.println("End recursion");
+        } else {
+            System.out.println(nums[pointer]);
+            printEveryOtherRecurser(nums, pointer + 2);
+        }
     }
 
     public static void doubleElementsInAnArray(int[] input) {
