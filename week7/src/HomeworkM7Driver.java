@@ -143,7 +143,17 @@ public class HomeworkM7Driver {
 
 
 	public static void reverseArray(int[] array) {
-		// YOUR CODE HERE
+		reverseArrayRecurser(array, 0, array.length - 1);
+	}
+
+	public static void reverseArrayRecurser(int[] array, int left, int right) {
+		if (array.length > 2 && left <= right) {
+			int temp = array[right];
+			array[right] = array[left];
+			array[left] = temp;
+
+			reverseArrayRecurser(array, left + 1, right - 1);
+		}
 	}
 
 	// a printing method for testing purposes
