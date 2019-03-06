@@ -132,9 +132,14 @@ public class HomeworkM7Driver {
 	}
 
 	public static boolean qNotFollowedByU(String word) {
-		// YOUR CODE HERE
-		return false;
+		if (word.length() < 1) { return false; }
+		else {
+			if (word.length() == 1) { return Character.toLowerCase(word.charAt(0)) == 'q' ? true : false; }
+			else if (Character.toLowerCase(word.charAt(0)) == 'q' && Character.toLowerCase(word.charAt(1)) != 'u') { return true; }
+			else { return qNotFollowedByU(word.substring(1)) ? true : false; }
+		}
 	}
+
 
 
 	public static void reverseArray(int[] array) {
