@@ -170,8 +170,15 @@ public class HomeworkM7Driver {
 
 
 	public static int countPositives(BagInterface<Integer> bag) {
-		return 0;
-		// YOUR EXTRA CREDIT CODE HERE
+		int count = 0;
+		if (bag.getCurrentSize() == 0) { return count; }
+		else {
+			int item = bag.remove();
+			count = (item > 0 ? 1 : 0) + countPositives(bag);
+			bag.add(item);
+			return count;
+		}
+	}
 	}
 
 }
