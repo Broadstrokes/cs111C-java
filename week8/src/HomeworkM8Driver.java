@@ -59,19 +59,71 @@ public class HomeworkM8Driver {
 		System.out.println("Sortedness \t100% \t" + formatter.format(sortednessRecursive(chain7)));
 
 	}
-
+	@SuppressWarnings("Duplicates")
 	public static double sortedness(Comparable[] array) {
-		// YOUR CODE HERE 
+		double sortedPairs = 0.0;
+		double totalPairs = 0.0;
+		if (array.length > 0) {
+			for(int i = 0; i < array.length - 1; i++) {
+				Comparable curr = array[i];
+				Comparable next = array[i+1];
+				System.out.println(">>> curr " + curr + " | nxt: " + next);
+
+				if (curr.compareTo(next) <= 0) {
+					sortedPairs += 1;
+				}
+
+				totalPairs++;
+			}
+			return sortedPairs/totalPairs;
+		}
+
 		return 0;
 	}
-
+	@SuppressWarnings("Duplicates")
 	public static double sortednessIterative(Node<Comparable> node) {
-		// YOUR CODE HERE 
-		return 0;
+		double sortedPairs = 0.0;
+		double totalPairs = 0.0;
+		while(node.next != null) {
+			System.out.println(">>> curr " + node.data + " | nxt: " + node.next.data);
+
+			if (node.data.compareTo(node.next.data) <= 0) {
+				sortedPairs += 1;
+			}
+
+			totalPairs++;
+			node = node.next;
+		}
+		return sortedPairs/totalPairs;
 	}
 
 	public static double sortednessRecursive(Node<Comparable> node) {
-		// YOUR CODE HERE 
-		return 0;
+		return sortednessRecursiveHelper(node, 0.0 , 0.0);
+	}
+
+	private static double sortednessRecursiveHelper(Node<Comparable> currNode, double sorted, double total) {
+		if (currNode.next == null) {
+			return sorted/total;
+		} else if(currNode.data.compareTo(currNode.next.data) <= 0) {
+			sorted += 1.0;
+		}
+		total += 1.0;
+
+		return sortednessRecursiveHelper(currNode.next, sorted, total);
 	}
 }
+
+
+/*
+Write two methods to measure to sortedness of a dataset. The sortedness is the degree to which data is sorted, ranging from 0 to 100%.
+
+There are different ways to measure the degree of sortedness. For the homework, compare neighbor elements. The degree of sortedness is the percentage of neighbor-matches that are in sorted order.
+(This is often described using the term inversions, which is two elements such that the index of element1 is < the index of element2, but element1 is greater than element2.)
+
+For our purposes, we are considering only ascending order (smallest to largest) as being sorted.
+
+Example: [2, 2, 4, 6, 7] has a 100% sortedness factor- all neighbor pairs of numbers are sorted
+Example: [2, 2, 6, 4, 7] has a 75% sortedness factor- the 6-4 neighbor pair is not sorted, but all other neighbor pairs (2-2, 2-6, and 4-7) are sorted
+Example: [7, 6, 4, 2, 1] has a 0% sortedness factor- no neighbor pairs are sorted in ascending order.
+See the homework driver for more examples and test cases.
+ */
