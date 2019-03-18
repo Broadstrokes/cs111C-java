@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * A linked implemention of the ADT list.
  * 
@@ -93,7 +95,25 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 	} // end remove
 
 	public void removeAll(T item) {
-		// YOUR CODE HERE
+		if (!isEmpty()) {
+			Node current = firstNode;
+			Node previous = null;
+			while (current != null) {
+				if (current.data.equals(item)) {
+					if (previous == null) {
+						firstNode = firstNode.next;
+						current = firstNode;
+					} else {
+						previous.next = current.next;
+						current = previous.next;
+					}
+					numberOfEntries--;
+				} else {
+					previous = current;
+					current = current.next;
+				}
+			}
+		}
 	}
 
 	public T replace(int givenPosition, T newEntry) {
@@ -185,6 +205,7 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 		// Assertion: currentNode != null
 		return currentNode;
 	} // end getNodeAt
+
 
 	private class Node {
 		private T data; // Entry in list
