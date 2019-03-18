@@ -45,8 +45,8 @@ public class MyDriver1 {
      * @param list2 list 2
      * @return new list created from merging list1 & list2
      */
-    private static ListInterface<Integer> mergeAList(ListInterface<Integer> list1, ListInterface<Integer> list2) {
-        ListInterface<Integer> mergedList = new AList<>();
+    private static ListInterface mergeAList(ListInterface list1, ListInterface list2) {
+        ListInterface mergedList = new AList<>();
         int count = 1;
         while ((count <= list1.getLength()) || (count <= list2.getLength())) {
             if (count <= list1.getLength()) { mergedList.add(list1.getEntry(count)); }
