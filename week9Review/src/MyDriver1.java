@@ -5,54 +5,100 @@ public class MyDriver1 {
 
     public static void main(String[] args) {
         println("=========== STARTING MY DRIVER 1 ============");
-        test1();
+        printDivider();
+        bagTrace();
+        listInterfaceTrace();
     }
 
-    private static void test1() {
-        ArrayBag<String> nameBag = new ArrayBag<>();
+
+    private static void listInterfaceTrace() {
+        printNameOfCurrMethod();
+        ListInterface<String> nameList = new AList<>();
+
+        System.out.println(nameList.isEmpty()); // Output: true
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: []
+        nameList.add("adam");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam"]
+        nameList.add("brian");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian"]
+        nameList.add("carl");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "carl"]
+        nameList.add("edgar");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "carl", "edgar"]
+        nameList.add(3, "hank");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "hank", "carl", "edgar"]
+        nameList.add("lenny");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "hank", "carl", "edgar", "lenny"]
+        nameList.add(1, "mark");
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["mark", "adam", "brian", "hank", "carl", "edgar", "lenny"]
+        System.out.println("Length: " + nameList.getLength()); // Output: 7
+        System.out.println("Entry at position 3: " + nameList.getEntry(3)); // Output: brian
+        System.out.println("Length: " + nameList.getLength()); // Output: 7
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["mark", "adam", "brian", "hank", "carl", "edgar", "lenny"]
+        System.out.println("Remove from position 2: " + nameList.remove(2)); // Output: adam
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["mark", "brian", "hank", "carl", "edgar", "lenny"]
+        System.out.println(nameList.getEntry(2)); // Output: carl
+        System.out.println("Remove from position 1: " + nameList.remove(1)); // Output: mark
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["brian", "hank", "carl", "edgar", "lenny"]
+        System.out.println("Remove from position 2: " + nameList.remove(2)); // Output: hank
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["brian", "carl", "edgar", "lenny"]
+        System.out.println(nameList.getLength()); // Output: 4
+        System.out.println("Replace at position 2: " + nameList.replace(2, "peter")); // Output: carl
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["brian", "peter", "edgar", "lenny"]
+        System.out.println("Entry at position 2: " + nameList.getEntry(2)); // Output: peter
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["brian", "peter", "edgar", "lenny"]
+        System.out.println("Entry at position 1: " + nameList.getEntry(1)); // Output: brian
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["brian", "peter", "edgar", "lenny"]
+        System.out.println("Length: " + nameList.getLength()); // Output: 4
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["brian", "peter", "edgar", "lenny"]
+    }
+
+    private static void bagTrace() {
+        printNameOfCurrMethod();
+        BagInterface<String> nameBag = new ArrayBag<>();
 
         System.out.println(nameBag.isEmpty());
-       // Bag Contents: []
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: []
         nameBag.add("adam");
-       // Bag Contents: ["adam"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam"]
         nameBag.add("brian");
-       // Bag Contents: ["adam", "brian"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian"]
         nameBag.add("carl");
-       // Bag Contents: ["adam", "brian", "carl"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian", "carl"]
         nameBag.add("adam");
-       // Bag Contents: ["adam", "brian", "carl", "adam"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian", "carl", "adam"]
         nameBag.add("fred");
-       // Bag Contents: ["adam", "brian", "carl", "adam", "fred"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian", "carl", "adam", "fred"]
         nameBag.add("carl");
-       // Bag Contents: ["adam", "brian", "carl", "adam", "fred", "carl"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian", "carl", "adam", "fred", "carl"]
         nameBag.add("harry");
-       // Bag Contents: ["adam", "brian", "carl", "adam", "fred", "carl", "harry"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian", "carl", "adam", "fred", "carl", "harry"]
         nameBag.add("hank");
-       // Bag Contents: ["adam", "brian", "carl", "adam", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["adam", "brian", "carl", "adam", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.remove("adam")); // Output: true
-       // Bag Contents: ["brian", "carl", "adam", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "adam", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.getCurrentSize()); // Output: 7
-       // Bag Contents: ["brian", "carl", "adam", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "adam", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.remove("adam")); // Output: true
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.remove("adam")); // Output: false
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.remove("ivan")); // Output: false
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.getCurrentSize()); // Output: 6
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.getFrequencyOf("carl")); // Output: 2
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.contains("ivan")); // Output: false
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.getFrequencyOf("ivan")); // Output: 0
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         System.out.println(nameBag.contains("ivan")); // Output: false
-       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
         nameBag.clear();
-       // Bag Contents: []
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: []
         System.out.println(nameBag.getCurrentSize()); // Output: 0
-       // Bag Contents: []
+        println(">>>>> " + Arrays.toString(nameBag.toArray())); // Contents: []
     }
 
 
@@ -76,15 +122,19 @@ public class MyDriver1 {
 
     public static void print(Object line) { System.out.print(line); }
 
-    public static void printDashes() { println("----------------------------"); }
+    public static void printDashes() { println("------------------------------------------------"); }
+    public static void printDivider() { println("\n\n"); }
 
     public static void printNameOfCurrMethod() {
         String nameOfCurrMethod =
                 new Throwable()
                         .getStackTrace()[1]
                         .getMethodName();
-
+        printDivider();
+        printDashes();
         println("*********** Running: " + nameOfCurrMethod + " **************");
+        printDashes();
+        printDivider();
     }
 
     /**
