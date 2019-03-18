@@ -236,6 +236,14 @@ public class MyDriver1 {
             System.out.println(errorMessage);
     }
 
+    public static <T> void printAList(ListInterface<T> aList) {
+        print("AList: [ ");
+        for(int i = 1; i <= aList.getLength(); i++) {
+         print(aList.getEntry(i));
+         print(" ");
+        }
+        println("]");
+    }
 
 }
 
