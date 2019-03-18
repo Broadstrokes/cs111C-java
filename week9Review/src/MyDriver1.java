@@ -107,7 +107,7 @@ public class MyDriver1 {
 
     private static void testMergeAList() {
         printNameOfCurrMethod();
-        
+
         ListInterface<Integer> shortList = new AList<>();
         shortList.add(1);
         shortList.add(2);
@@ -133,8 +133,9 @@ public class MyDriver1 {
      * @param list2 list 2
      * @return new list created from merging list1 & list2
      */
-    private static ListInterface mergeAList(ListInterface list1, ListInterface list2) {
-        ListInterface mergedList = new AList<>();
+    private static <T extends Comparable> ListInterface<T> mergeAList(ListInterface<T> list1, ListInterface<T> list2) {
+        ListInterface<T> mergedList = new AList<>();
+
         int count = 1;
         while ((count <= list1.getLength()) || (count <= list2.getLength())) {
             if (count <= list1.getLength()) { mergedList.add(list1.getEntry(count)); }
