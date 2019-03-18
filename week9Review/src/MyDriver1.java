@@ -12,9 +12,50 @@ public class MyDriver1 {
 //        bagTrace();
 //        listInterfaceTrace();
 //        listTrace();
-        testMergeList();
+//        testMergeList();
+        testMergeAList();
     }
 
+
+    private static void testMergeAList() {
+        printNameOfCurrMethod();
+        
+        ListInterface<Integer> shortList = new AList<>();
+        shortList.add(1);
+        shortList.add(2);
+        shortList.add(3);
+
+        ListInterface<Integer> longList = new AList<>();
+        longList.add(4);
+        longList.add(6);
+        longList.add(8);
+        longList.add(10);
+
+        ListInterface<Integer> emptyList = new AList<>();
+
+        println(Arrays.toString(mergeAList(shortList, longList).toArray()));
+        println(Arrays.toString(mergeAList(longList, shortList).toArray()));
+        println(Arrays.toString(mergeAList(emptyList, shortList).toArray()));
+        println(Arrays.toString(mergeAList(emptyList, emptyList).toArray()));
+    }
+
+    /**
+     * Merge two lists that implement ListInterface
+     * @param list1 list 1
+     * @param list2 list 2
+     * @return new list created from merging list1 & list2
+     */
+    private static ListInterface<Integer> mergeAList(ListInterface<Integer> list1, ListInterface<Integer> list2) {
+        ListInterface<Integer> mergedList = new AList<>();
+        int count = 1;
+        while ((count <= list1.getLength()) || (count <= list2.getLength())) {
+            if (count <= list1.getLength()) { mergedList.add(list1.getEntry(count)); }
+            if (count <= list2.getLength()) { mergedList.add(list2.getEntry(count)); }
+            count++;
+        }
+
+        return mergedList;
+    }
 
     private static void testMergeList() {
         printNameOfCurrMethod();
@@ -35,7 +76,7 @@ public class MyDriver1 {
     }
 
     /**
-     * Merge two lists
+     * Merge two lists that implement Java's List interface
      * @param list1 list 1
      * @param list2 list 2
      * @return new list created from merging list1 & list2
