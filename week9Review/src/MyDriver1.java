@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @SuppressWarnings("Duplicates")
 public class MyDriver1 {
@@ -9,11 +6,13 @@ public class MyDriver1 {
     public static void main(String[] args) {
         println("=========== STARTING MY DRIVER 1 ============");
         printDivider();
-//        bagTrace();
-//        listInterfaceTrace();
-//        listTrace();
-//        testMergeList();
+        bagTrace();
+        listInterfaceTrace();
+        listTrace();
+        testMergeList();
         testMergeAList();
+        testMergeBags();
+        testContainsDuplicates();
     }
 
 
@@ -72,6 +71,40 @@ public class MyDriver1 {
 
         return result;
     }
+
+    private static void testMergeBags() {
+        BagInterface<Integer> bag1 = new ArrayBag<>();
+        bag1.add(1);
+        bag1.add(2);
+        bag1.add(3);
+
+        BagInterface<Integer> bag2 = new ArrayBag<>();
+        bag2.add(4);
+        bag2.add(6);
+        bag2.add(8);
+        bag2.add(10);
+
+        println(Arrays.toString(mergeBags(bag1, bag2).toArray()));
+    }
+
+    /**
+     * Merges two bags into a new bag
+     * @param bag1 first bag to merge
+     * @param bag2 second bag to merge
+     * @return new bag that contains items from bag1 & bag2
+     */
+    private static <T> BagInterface<T> mergeBags(BagInterface<T> bag1, BagInterface<T> bag2) {
+        BagInterface<T> mergedBag = new ArrayBag<>();
+
+        while (!bag1.isEmpty() || !bag2.isEmpty()) {
+            if (!bag1.isEmpty()) { mergedBag.add(bag1.remove()); }
+            if (!bag2.isEmpty()) { mergedBag.add(bag2.remove()); }
+        }
+
+        return mergedBag;
+    }
+
+
     private static void testMergeAList() {
         printNameOfCurrMethod();
         
