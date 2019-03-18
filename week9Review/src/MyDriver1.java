@@ -17,6 +17,61 @@ public class MyDriver1 {
     }
 
 
+    public static void testContainsDuplicates() {
+        printNameOfCurrMethod();
+
+        ListInterface<Integer> noDuplicatesList = new AList<>();
+        noDuplicatesList.add(1);
+        noDuplicatesList.add(2);
+        noDuplicatesList.add(3);
+
+        ListInterface<Integer> listWithDuplicates = new AList<>();
+        listWithDuplicates.add(4);
+        listWithDuplicates.add(6);
+        listWithDuplicates.add(8);
+        listWithDuplicates.add(10);
+        listWithDuplicates.add(8);
+
+        ListInterface<String> listWithDuplicateStrings = new AList<>();
+        listWithDuplicateStrings.add("harry");
+        listWithDuplicateStrings.add("james");
+        listWithDuplicateStrings.add("barron");
+        listWithDuplicateStrings.add("harry");
+        listWithDuplicateStrings.add("kenith");
+
+        ListInterface<Integer> singeltonList = new AList<>();
+        singeltonList.add(4);
+
+        ListInterface<Integer> emptyList = new AList<>();
+
+
+
+        println(containsDuplicates(noDuplicatesList)); // false
+        println(containsDuplicates(listWithDuplicates)); // true
+        println(containsDuplicates(listWithDuplicateStrings)); // true
+        println(containsDuplicates(singeltonList)); // false
+        println(containsDuplicates(emptyList)); // false
+    }
+
+    /**
+     * Checks if a list that implements ListInterface contains duplicates
+     * @param list the list to check for duplicates
+     * @return true if the list contains duplicates otherwise return false
+     */
+    private static <T> boolean containsDuplicates(ListInterface<T> list) {
+        boolean result = false;
+        Set<T> items = new HashSet();
+
+        if (!list.isEmpty()) {
+            for(int i = 1; i <= list.getLength(); i++) {
+                T item = list.getEntry(i);
+                if (items.contains(item)) { return true; }
+                else { items.add(item); }
+            }
+        }
+
+        return result;
+    }
     private static void testMergeAList() {
         printNameOfCurrMethod();
         
