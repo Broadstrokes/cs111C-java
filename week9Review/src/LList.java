@@ -19,14 +19,12 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 		initializeDataFields();
 	} // end clear
 
-	public void add(T newEntry) // OutOfMemoryError possible
-	{
+	public void add(T newEntry) { // OutOfMemoryError possible
 		Node newNode = new Node(newEntry);
 
 		if (isEmpty())
 			firstNode = newNode;
-		else // Add to end of nonempty list
-		{
+		else { // Add to end of nonempty list
 			Node lastNode = getNodeAt(numberOfEntries);
 			lastNode.setNextNode(newNode); // Make last node reference new node
 		} // end if
@@ -34,16 +32,15 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 		numberOfEntries++;
 	} // end add
 
-	public void add(int givenPosition, T newEntry) // OutOfMemoryError possible
-	{
+	public void add(int givenPosition, T newEntry) { // OutOfMemoryError possible
+
 		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries + 1)) {
 			Node newNode = new Node(newEntry);
-			if (givenPosition == 1) // Case 1
-			{
+			if (givenPosition == 1) { // Case 1
 				newNode.setNextNode(firstNode);
 				firstNode = newNode;
-			} else // Case 2: list is not empty
-			{ // and givenPosition > 1
+			} else { // Case 2: list is not empty
+			 		// and givenPosition > 1
 				Node nodeBefore = getNodeAt(givenPosition - 1);
 				Node nodeAfter = nodeBefore.getNextNode();
 				newNode.setNextNode(nodeAfter);
@@ -76,12 +73,11 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 		T result = null; // Return value
 		if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
 			// Assertion: !isEmpty()
-			if (givenPosition == 1) // Case 1: Remove first entry
-			{
+			if (givenPosition == 1) { // Case 1: Remove first entry
+
 				result = firstNode.getData(); // Save entry to be removed
 				firstNode = firstNode.getNextNode(); // Remove entry
-			} else // Case 2: Not first entry
-			{
+			} else { // Case 2: Not first entry
 				Node nodeBefore = getNodeAt(givenPosition - 1);
 				Node nodeToRemove = nodeBefore.getNextNode();
 				result = nodeToRemove.getData(); // Save entry to be removed
