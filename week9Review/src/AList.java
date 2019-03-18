@@ -237,7 +237,24 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T> 
 		return 0;
 		// YOUR HOMEWORK CODE HERE
 	}
-   
+
+    /**
+     * Get the frequency of an element in the list
+     * @param element the element to check
+     * @return the number of times the element is found in the list
+     */
+	public int getFrequencyOf(T element) {
+       int count = 0;
+
+        if(this.numberOfEntries > 1) {
+            for (int i = 1; i <= this.numberOfEntries; i++) {
+                T item = list[i];
+                if (item.equals(element)) count++;
+            }
+        }
+
+       return count;
+    }
    
 } // end AList
 

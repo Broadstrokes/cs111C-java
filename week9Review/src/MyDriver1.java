@@ -14,8 +14,41 @@ public class MyDriver1 {
         testMergeBags();
         testContainsDuplicates();
         testGetCurrentBagSize();
+        testGetFrequencyOfAList();
     }
 
+    public static void testGetFrequencyOfAList() {
+        printNameOfCurrMethod();
+
+        ListInterface<Integer> noDuplicatesList = new AList<>();
+        noDuplicatesList.add(1);
+        noDuplicatesList.add(2);
+        noDuplicatesList.add(3);
+
+        ListInterface<Integer> listWithDuplicates = new AList<>();
+        listWithDuplicates.add(4);
+        listWithDuplicates.add(6);
+        listWithDuplicates.add(8);
+        listWithDuplicates.add(10);
+        listWithDuplicates.add(8);
+
+        ListInterface<String> listWithDuplicateStrings = new AList<>();
+        listWithDuplicateStrings.add("harry");
+        listWithDuplicateStrings.add("james");
+        listWithDuplicateStrings.add("barron");
+        listWithDuplicateStrings.add("harry");
+        listWithDuplicateStrings.add("james");
+        listWithDuplicateStrings.add("harry");
+
+
+        println(((AList<Integer>) noDuplicatesList).getFrequencyOf(5)); // 0
+        println(((AList<Integer>) noDuplicatesList).getFrequencyOf(3)); // 1
+        println(((AList<Integer>) listWithDuplicates).getFrequencyOf(8)); // 2
+        println(((AList<String>) listWithDuplicateStrings).getFrequencyOf("harry")); // 3
+        println(((AList<String>) listWithDuplicateStrings).getFrequencyOf("barron")); // 1
+        println(((AList<String>) listWithDuplicateStrings).getFrequencyOf("ken")); // 0
+
+    }
 
     public static void testGetCurrentBagSize() {
         printNameOfCurrMethod();
