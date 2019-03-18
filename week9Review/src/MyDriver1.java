@@ -16,6 +16,26 @@ public class MyDriver1 {
         testGetCurrentBagSize();
         testGetFrequencyOfAList();
         testGetFrequencyOfLList();
+        testGetSizeArrayBag();
+    }
+
+    public static void testGetSizeArrayBag() {
+        printNameOfCurrMethod();
+
+        BagInterface<Integer> bagWithNumbers = new ArrayBag<>();
+        BagInterface<Integer> emptyBag = new ArrayBag<>();
+        bagWithNumbers.add(1);
+        bagWithNumbers.add(2);
+        bagWithNumbers.add(3);
+        bagWithNumbers.add(4);
+        bagWithNumbers.add(5);
+
+        println(getCurrentSize(bagWithNumbers)); // 5
+        println(((ArrayBag<Integer>) bagWithNumbers).getSize()); // 5
+        println(Arrays.toString(bagWithNumbers.toArray()));
+        println(getCurrentSize(emptyBag)); // 0
+        println(((ArrayBag<Integer>) emptyBag).getSize()); // 0
+        println(Arrays.toString(emptyBag.toArray()));
     }
 
     public static void testGetFrequencyOfLList() {

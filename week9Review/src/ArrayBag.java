@@ -161,6 +161,22 @@ public final class ArrayBag<T> implements BagInterface<T> {
 		return where;
 	} // end getIndexOf
 
+    /**
+     * Requirement: Assume there is no getCurrentSize() method and no direct access to numberOfEntries.
+     * Write a get size method
+     *
+     * @return the size of the array bag
+     */
+    public int getSize() {
+        int size = 0;
+        for (int i = 0; i < bag.length; i++) {
+            if (bag[i] != null) {
+                size++;
+            }
+        }
+        return size;
+    }
+
    // Removes and returns the entry at a given index within the array.
    // If no such entry exists, returns null.
    // Precondition: 0 <= givenIndex < numberOfEntries.
