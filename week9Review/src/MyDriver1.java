@@ -13,8 +13,47 @@ public class MyDriver1 {
         testMergeAList();
         testMergeBags();
         testContainsDuplicates();
+        testGetCurrentBagSize();
     }
 
+
+    public static void testGetCurrentBagSize() {
+        printNameOfCurrMethod();
+        BagInterface<Integer> bag1 = new ArrayBag<>();
+        BagInterface<Integer> bag2 = new ArrayBag<>();
+        bag1.add(1);
+        bag1.add(2);
+        bag1.add(3);
+        bag1.add(4);
+        bag1.add(5);
+
+        println(getCurrentSize(bag1)); // 5
+        println(Arrays.toString(bag1.toArray()));
+        println(getCurrentSize(bag2)); // 0
+        println(Arrays.toString(bag2.toArray()));
+    }
+
+    /**
+     * Get the size of a bag
+     * @param bag bag to check
+     * @param <T> generic
+     * @return count of the number of items in the bag
+     */
+    public static <T> int getCurrentSize(BagInterface<T> bag) {
+        int count = 0;
+        BagInterface<T> tempBag = new ArrayBag<>();
+
+        while(!bag.isEmpty()) {
+            tempBag.add(bag.remove());
+            count++;
+        }
+
+        while(!tempBag.isEmpty()) {
+            bag.add(tempBag.remove());
+        }
+
+        return count;
+    }
 
     public static void testContainsDuplicates() {
         printNameOfCurrMethod();
