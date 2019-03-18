@@ -1,11 +1,59 @@
+import java.util.Arrays;
+
+@SuppressWarnings("Duplicates")
 public class MyDriver1 {
 
     public static void main(String[] args) {
         println("=========== STARTING MY DRIVER 1 ============");
+        test1();
     }
 
-private static void test1() {
-}
+    private static void test1() {
+        ArrayBag<String> nameBag = new ArrayBag<>();
+
+        System.out.println(nameBag.isEmpty());
+       // Bag Contents: []
+        nameBag.add("adam");
+       // Bag Contents: ["adam"]
+        nameBag.add("brian");
+       // Bag Contents: ["adam", "brian"]
+        nameBag.add("carl");
+       // Bag Contents: ["adam", "brian", "carl"]
+        nameBag.add("adam");
+       // Bag Contents: ["adam", "brian", "carl", "adam"]
+        nameBag.add("fred");
+       // Bag Contents: ["adam", "brian", "carl", "adam", "fred"]
+        nameBag.add("carl");
+       // Bag Contents: ["adam", "brian", "carl", "adam", "fred", "carl"]
+        nameBag.add("harry");
+       // Bag Contents: ["adam", "brian", "carl", "adam", "fred", "carl", "harry"]
+        nameBag.add("hank");
+       // Bag Contents: ["adam", "brian", "carl", "adam", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.remove("adam")); // Output: true
+       // Bag Contents: ["brian", "carl", "adam", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.getCurrentSize()); // Output: 7
+       // Bag Contents: ["brian", "carl", "adam", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.remove("adam")); // Output: true
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.remove("adam")); // Output: false
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.remove("ivan")); // Output: false
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.getCurrentSize()); // Output: 6
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.getFrequencyOf("carl")); // Output: 2
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.contains("ivan")); // Output: false
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.getFrequencyOf("ivan")); // Output: 0
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        System.out.println(nameBag.contains("ivan")); // Output: false
+       // Bag Contents: ["brian", "carl", "fred", "carl", "harry", "hank"]
+        nameBag.clear();
+       // Bag Contents: []
+        System.out.println(nameBag.getCurrentSize()); // Output: 0
+       // Bag Contents: []
+    }
 
 
 
