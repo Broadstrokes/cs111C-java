@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public class MyDriver1 {
@@ -6,10 +8,43 @@ public class MyDriver1 {
     public static void main(String[] args) {
         println("=========== STARTING MY DRIVER 1 ============");
         printDivider();
-        bagTrace();
-        listInterfaceTrace();
+//        bagTrace();
+//        listInterfaceTrace();
+        listTrace();
     }
 
+
+    private static void listTrace() {
+        printNameOfCurrMethod();
+        List<String> nameList = new ArrayList<>();
+
+        System.out.println(nameList.isEmpty()); // Output: true
+        nameList.add("adam"); // Output: true
+        nameList.add("brian"); // Output: true
+        nameList.add("carl"); // Output: true
+        nameList.add("edgar"); // Output: true
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "carl", "edgar"]
+        nameList.add(3, "hank"); // Output: null
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "carl", "hank", "edgar"]
+        nameList.add("lenny"); // Output: true
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "brian", "carl", "hank", "edgar", "lenny"]
+        nameList.add(1, "mark"); // Output: null
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "mark", "brian", "carl", "hank", "edgar", "lenny"]
+        System.out.println(nameList.size()); // Output: 7
+        System.out.println(nameList.get(3)); // Output: carl
+        System.out.println(nameList.remove(2)); // Output: brian
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "mark", "carl", "hank", "edgar", "lenny"]
+        System.out.println(nameList.get(2)); // Output: carl
+        System.out.println(nameList.remove(1)); // Output: mark
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "carl", "hank", "edgar", "lenny"]
+        System.out.println(nameList.remove(2)); // Output: hank
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "carl", "edgar", "lenny"]
+        System.out.println(nameList.size()); // Output: 4
+        System.out.println(nameList.set(2, "peter")); // Output: edgar
+        println(">>>>> " + Arrays.toString(nameList.toArray())); // Contents: ["adam", "carl", "peter", "lenny"]
+        System.out.println(nameList.get(2)); // Output: peter
+        System.out.println(nameList.get(1)); // Output: carl
+    }
 
     private static void listInterfaceTrace() {
         printNameOfCurrMethod();
