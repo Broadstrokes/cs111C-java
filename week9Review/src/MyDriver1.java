@@ -15,6 +15,41 @@ public class MyDriver1 {
         testContainsDuplicates();
         testGetCurrentBagSize();
         testGetFrequencyOfAList();
+        testGetFrequencyOfLList();
+    }
+
+    public static void testGetFrequencyOfLList() {
+        printNameOfCurrMethod();
+
+        Node a = new Node(9);
+        Node b = new Node(8, a);
+        Node c = new Node(6, b);
+        Node d = new Node(4, c);
+        Node currentNode = d;
+
+        LList<Integer> numberList = new LList<Integer>();
+        LList<Integer> emptyList = new LList<>();
+        LList<Integer> singletonList = new LList<>();
+
+        numberList.add(1);
+        numberList.add(2);
+        numberList.add(3);
+        numberList.add(4);
+        numberList.add(5);
+        numberList.add(3);
+
+        singletonList.add(3);
+        println("Numbers list" + Arrays.toString(numberList.toArray()));
+        println("Singleton list" + Arrays.toString(singletonList.toArray()));
+        println("Empty list" + Arrays.toString(emptyList.toArray()));
+
+
+        println(emptyList.getFrequencyOf(10)); // 0
+        println(singletonList.getFrequencyOf(10)); // 0
+        println(singletonList.getFrequencyOf(3)); // 1
+        println(numberList.getFrequencyOf(10)); // 0
+        println(numberList.getFrequencyOf(3)); // 2
+
     }
 
     public static void testGetFrequencyOfAList() {

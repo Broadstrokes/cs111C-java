@@ -180,6 +180,22 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 		return result;
 	} // end isEmpty
 
+	/**
+	 * Get the frequency of an element in the list
+	 * @param element the element to check
+	 * @return the number of times the element is found in the list
+	 */
+	public int getFrequencyOf(T element) {
+		int count = 0;
+		Node currentNode = firstNode;
+		while (currentNode != null) {
+			if (currentNode.data.equals(element)) count++;
+			currentNode = currentNode.next;
+		}
+		return count;
+	}
+
+
 	// Initializes the class's data fields to indicate an empty list.
 	private void initializeDataFields() {
 		firstNode = null;
@@ -201,7 +217,6 @@ public class LList<T extends Comparable<? super T>> implements ListInterface<T> 
 		// Assertion: currentNode != null
 		return currentNode;
 	} // end getNodeAt
-
 
 	private class Node {
 		private T data; // Entry in list
