@@ -7,8 +7,7 @@ import java.util.Arrays;
  @author Timothy M. Henry
  @version 5.0
  */
-public class AList<T extends Comparable<? super T>> implements ListInterface<T>
-{
+public class AList<T extends Comparable<? super T>> implements ListInterface<T> {
    private T[] list;   // Array of list entries; ignore list[0]
    private int numberOfEntries;
    private boolean integrityOK;
@@ -20,8 +19,7 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
       this(DEFAULT_CAPACITY);
    } // end default constructor
    
-   public AList(int initialCapacity)
-   {
+   public AList(int initialCapacity) {
       integrityOK = false;
       
       // Is initialCapacity too small?
@@ -38,8 +36,7 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
       integrityOK = true;
    } // end constructor
 
-	public void add(T newEntry)
-	{
+	public void add(T newEntry) {
       add(numberOfEntries + 1, newEntry);
 /*    // Alternate code
 		checkIntegrity();
@@ -49,11 +46,9 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
 */
 	} // end add
    
-   public void add(int givenPosition, T newEntry)
-   {
+   public void add(int givenPosition, T newEntry) {
       checkIntegrity();
-      if ((givenPosition >= 1) && (givenPosition <= numberOfEntries + 1))
-      {
+      if ((givenPosition >= 1) && (givenPosition <= numberOfEntries + 1)) {
          if (givenPosition <= numberOfEntries)
             makeRoom(givenPosition);
          list[givenPosition] = newEntry;
@@ -64,11 +59,9 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
          throw new IndexOutOfBoundsException("Given position of add's new entry is out of bounds.");
    } // end add
    
-   public T remove(int givenPosition)
-   {
+   public T remove(int givenPosition) {
       checkIntegrity();
-      if ((givenPosition >= 1) && (givenPosition <= numberOfEntries))
-      {
+      if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
          // Assertion: The list is not empty
          T result = list[givenPosition]; // Get entry to be removed
          
@@ -84,8 +77,7 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
          throw new IndexOutOfBoundsException("Illegal position given to remove operation.");
    } // end remove
 
-	public void clear()
-	{
+	public void clear() {
 		checkIntegrity();
 
       // Clear entries but retain array; no need to create a new array
@@ -95,11 +87,9 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
 		numberOfEntries = 0;
 	} // end clear
 
-	public T replace(int givenPosition, T newEntry)
-	{
+	public T replace(int givenPosition, T newEntry) {
 		checkIntegrity();
-      if ((givenPosition >= 1) && (givenPosition <= numberOfEntries))
-      {
+      if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
          // Assertion: The list is not empty
          T originalEntry = list[givenPosition];
          list[givenPosition] = newEntry;
@@ -109,11 +99,9 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
          throw new IndexOutOfBoundsException("Illegal position given to replace operation.");
    } // end replace
 
-	public T getEntry(int givenPosition)
-	{
+	public T getEntry(int givenPosition) {
 		checkIntegrity();
-      if (validPosition(givenPosition))
-      {
+      if (validPosition(givenPosition)) {
          // Assertion: The list is not empty
          return list[givenPosition];
       }
@@ -121,28 +109,24 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
          throw new IndexOutOfBoundsException("Illegal position given to getEntry operation.");
 	} // end getEntry
 
-   public T[] toArray()
-   {
+   public T[] toArray() {
 		checkIntegrity();
       
       // The cast is safe because the new array contains null entries
       @SuppressWarnings("unchecked")
       T[] result = (T[])new Comparable[numberOfEntries]; // Unchecked cast
-      for (int index = 0; index < numberOfEntries; index++)
-      {
+      for (int index = 0; index < numberOfEntries; index++) {
          result[index] = list[index + 1];
       } // end for
       
       return result;
    } // end toArray
    
-   public boolean contains(T anEntry)
-   {
+   public boolean contains(T anEntry) {
       checkIntegrity();
       boolean found = false;
       int index = 1;
-      while (!found && (index <= numberOfEntries))
-      {
+      while (!found && (index <= numberOfEntries)) {
          if (anEntry.equals(list[index]))
             found = true;
          index++;
@@ -155,18 +139,15 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
       return numberOfEntries;
    } // end getLength
    
-   public boolean isEmpty()
-   {
+   public boolean isEmpty() {
       return numberOfEntries == 0; // Or getLength() == 0
    } // end isEmpty
    
    // Doubles the capacity of the array list if it is full.
    // Precondition: checkIntegrity has been called.
-   private void ensureCapacity()
-   {
+   private void ensureCapacity() {
       int capacity = list.length - 1;
-      if (numberOfEntries >= capacity)
-      {
+      if (numberOfEntries >= capacity) {
          int newCapacity = 2 * capacity;
          checkCapacity(newCapacity); // Is capacity too big?
          list = Arrays.copyOf(list, newCapacity + 1);
@@ -177,8 +158,7 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
    // Precondition: 1 <= newPosition <= numberOfEntries + 1;
 	//               numberOfEntries is list's length before addition;
    //               checkIntegrity has been called.
-   private void makeRoom(int givenPosition)
-   {
+   private void makeRoom(int givenPosition) {
       // Assertion: (newPosition >= 1) && (newPosition <= numberOfEntries + 1)
       int newIndex = givenPosition;
       int lastIndex = numberOfEntries;
@@ -194,23 +174,20 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T>
    // Precondition: 1 <= givenPosition < numberOfEntries;
    //               numberOfEntries is list's length before removal;
    //               checkIntegrity has been called.
-     private void removeGap(int givenPosition)
-   {
+     private void removeGap(int givenPosition) {
       int removedIndex = givenPosition;
       for (int index = removedIndex; index < numberOfEntries; index++)
          list[index] = list[index + 1];
    } // end removeGap
    
    // Throws an exception if this object is corrupt.
-   private void checkIntegrity()
-   {
+   private void checkIntegrity() {
       if (!integrityOK)
          throw new SecurityException ("AList object is corrupt.");
    } // end checkIntegrity
    
    // Throws an exception if the client requests a capacity that is too large.
-   private void checkCapacity(int capacity)
-   {
+   private void checkCapacity(int capacity) {
       if (capacity > MAX_CAPACITY)
          throw new IllegalStateException("Attempt to create a list " +
                                          "whose capacity exceeds " +
