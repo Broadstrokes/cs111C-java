@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 @SuppressWarnings("Duplicates")
@@ -10,9 +11,55 @@ public class MyDriver1 {
         printDivider();
 //        bagTrace();
 //        listInterfaceTrace();
-        listTrace();
+//        listTrace();
+        testMergeList();
     }
 
+
+    private static void testMergeList() {
+        printNameOfCurrMethod();
+
+        Integer[] shortArr = {1, 2, 3};
+        Integer[] longArr = {4, 6, 8, 10};
+        Integer[] emptyArr = {};
+
+        List<Integer> shortList = new ArrayList<>(Arrays.asList(shortArr));
+        List<Integer> longList = new ArrayList<>(Arrays.asList(longArr));
+        List<Integer> emptyList = new ArrayList<>(Arrays.asList(emptyArr));
+
+        println(mergeList(shortList, longList));
+        println(mergeList(longList, shortList));
+        println(mergeList(emptyList, shortList));
+        println(mergeList(emptyList, emptyList));
+
+    }
+
+    /**
+     * Merge two lists
+     * @param list1 list 1
+     * @param list2 list 2
+     * @return new list created from merging list1 & list2
+     */
+    private static List<Integer> mergeList(List<Integer> list1, List<Integer> list2) {
+        List<Integer> mergedList = new ArrayList<>();
+        Iterator<Integer> itr1 = list1.iterator();
+        Iterator<Integer> itr2 = list2.iterator();
+
+        while(itr1.hasNext() || itr2.hasNext()) {
+            if (itr1.hasNext()) { mergedList.add(itr1.next()); }
+            if (itr2.hasNext()) { mergedList.add(itr2.next()); }
+        }
+
+        return mergedList;
+    }
+
+    /*
+        What does it mean to use a bag or list as a client (to use an interface)? What can you access?
+
+        Using a bag or list as a client means that you are using some implementation of a the bag or list interface.
+        You can access properties and methods that have been made public.
+
+     */
 
     private static void listTrace() {
         printNameOfCurrMethod();
