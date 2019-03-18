@@ -198,10 +198,6 @@ public final class ResizableArrayBag<T> implements BagInterface<T> {
       if (!integrityOK)
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
-   
-   
-	public void trimToSize() {
-		// YOUR HOMEWORK CODE HERE
-	}
+
 } // end ResizableArrayBag
 

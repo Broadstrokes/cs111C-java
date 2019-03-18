@@ -233,11 +233,6 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T> 
 		return lessThanList;
 	}
 
-	public int removeEvery(T element) {
-		return 0;
-		// YOUR HOMEWORK CODE HERE
-	}
-
     /**
      * Get the frequency of an element in the list
      * @param element the element to check
