@@ -149,10 +149,14 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements
 	} // end getEntry
 
 	public int countEntries(T entry) {
-		// YOUR CODE HERE
-		return 0;
+		return countEntriesHelper(firstNode, entry, 0);
 	}
 
+	private int countEntriesHelper(Node node, T target, int count) {
+		if (node == null) return count;
+		if (node.data.equals(target)) { count++; }
+		return countEntriesHelper(node.getNextNode(), target, count);
+	}
 	
 	public int getLength() {
 		return length;
