@@ -58,10 +58,12 @@ public class MyDriver {
 
 
     // After Java 1.8
+    // https://stackoverflow.com/questions/6092642/how-to-remove-a-key-from-hashmap-while-iterating-over-it
     public static void dropUnpaidStudents(HashMap<String, Student> map) {
         map.entrySet().removeIf(entry -> !entry.getValue().isTuitionPaid());
     }
 
+    // https://thispointer.com/java-remove-elements-from-hashmap-while-iterating/
     public static void dropUnpaidStudentsUsingIterator(HashMap<String, Student> map) {
         Iterator<String> studentItr = map.keySet().iterator();
         while (studentItr.hasNext()) {
