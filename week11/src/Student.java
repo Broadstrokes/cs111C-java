@@ -2,9 +2,12 @@ public class Student implements Comparable<Student> {
 
     private String name;
     private String id;
-    public Student(String name, String id) {
+    private boolean paid;
+
+    public Student(String name, String id, boolean paid) {
         this.name = name;
         this.id = id;
+        this.paid = paid;
     }
     public String getName() {
         return name;
@@ -18,13 +21,11 @@ public class Student implements Comparable<Student> {
     public void setId(String id) {
         this.id = id;
     }
+    public boolean isTuitionPaid() { return this.paid; }
 
 
     @Override
-    public String toString() {
-        String s = "Name: " + name + " (" + id + ")";
-        return s;
-    }
+    public String toString() { return "Name: " + name + " Id: " + id; }
 
     @Override
     public boolean equals(Object obj) {
@@ -35,8 +36,6 @@ public class Student implements Comparable<Student> {
             return false;
         }
     }
-
-
 
     @Override
     public int compareTo(Student otherStudent) {
