@@ -1,47 +1,45 @@
-public class Student implements Comparable<Student> {
+import java.util.Objects;
 
-    private String name;
-    private String id;
-    private boolean paid;
+public class Student {
+	
+	private int id;
+	private String firstName, lastName;
+	private boolean paidFees;
+	
+	public Student(int id, String firstName, String lastName, boolean paidFees) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.paidFees = paidFees;
+	}
+	public int getId() {
+		return id;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public boolean hasPaidFees() {
+		return paidFees;
+	}
+	public String toString() {
+		return firstName + " " + lastName + " (ID: " + id + ")" + ( paidFees ? "" : " (Fees Owed)");
+	}
 
-    public Student(String name, String id, boolean paid) {
-        this.name = name;
-        this.id = id;
-        this.paid = paid;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-    public boolean isTuitionPaid() { return this.paid; }
-
-
-    @Override
-    public String toString() { return "Name: " + name + " Id: " + id; }
-
-    @Override
-    public boolean equals(Object obj) {
-        if(obj instanceof Student) {
-            Student other = (Student) obj;
-            return name.equals(other.name) && id.equals(other.id);
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int compareTo(Student otherStudent) {
-        return id.compareTo(otherStudent.id);
-        //return name.compareTo(otherStudent.name);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		// YOUR CODE HERE
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		// YOUR CODE HERE
+		return 0;
+	}
 
 
 }
