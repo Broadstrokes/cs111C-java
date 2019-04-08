@@ -12,19 +12,19 @@ public class MyDriver {
 
     public static void test0() {
         HashMap<String, Student> studentMap = new HashMap();
-        Student harry = new Student("harry", "1", false);
-        Student jim = new Student("jim", "5", false);
-        Student konan = new Student("konan", "6", false);
-        Student barry = new Student("barry", "2", true);
-        Student linda = new Student("linda", "8", false);
-        Student kyle = new Student("kyle", "3", false);
+        Student harry = new Student(1, "Harry", "Stiles", false);
+        Student jim = new Student(5, "Jim", "Kramer", false);
+        Student konan = new Student(6, "Conan", "O' Brian", false);
+        Student barry = new Student(2, "Barry", "Bonds", true);
+        Student linda = new Student(8, "Linda", "Smith", true);
+        Student kyle = new Student(3, "Kyle", "Chu", false);
 
-        studentMap.put(harry.getId(), harry);
-        studentMap.put(jim.getId(), jim);
-        studentMap.put(konan.getId(), konan);
-        studentMap.put(barry.getId(), barry);
-        studentMap.put(linda.getId(), linda);
-        studentMap.put(kyle.getId(), kyle);
+        studentMap.put(Integer.toString(harry.getId()), harry);
+        studentMap.put(Integer.toString(jim.getId()), jim);
+        studentMap.put(Integer.toString(konan.getId()), konan);
+        studentMap.put(Integer.toString(barry.getId()), barry);
+        studentMap.put(Integer.toString(linda.getId()), linda);
+        studentMap.put(Integer.toString(kyle.getId()), kyle);
 
         System.out.println(studentMap.toString());
 
@@ -35,19 +35,19 @@ public class MyDriver {
 
     public static void test1() {
         HashMap<String, Student> studentMap = new HashMap();
-        Student harry = new Student("harry", "1", false);
-        Student jim = new Student("jim", "5", false);
-        Student konan = new Student("konan", "6", false);
-        Student barry = new Student("barry", "2", true);
-        Student linda = new Student("linda", "8", false);
-        Student kyle = new Student("kyle", "3", false);
+        Student harry = new Student(1, "Harry", "Stiles", false);
+        Student jim = new Student(5, "Jim", "Kramer", false);
+        Student konan = new Student(6, "Conan", "O' Brian", false);
+        Student barry = new Student(2, "Barry", "Bonds", true);
+        Student linda = new Student(8, "Linda", "Smith", true);
+        Student kyle = new Student(3, "Kyle", "Chu", false);
 
-        studentMap.put(harry.getId(), harry);
-        studentMap.put(jim.getId(), jim);
-        studentMap.put(konan.getId(), konan);
-        studentMap.put(barry.getId(), barry);
-        studentMap.put(linda.getId(), linda);
-        studentMap.put(kyle.getId(), kyle);
+        studentMap.put(Integer.toString(harry.getId()), harry);
+        studentMap.put(Integer.toString(jim.getId()), jim);
+        studentMap.put(Integer.toString(konan.getId()), konan);
+        studentMap.put(Integer.toString(barry.getId()), barry);
+        studentMap.put(Integer.toString(linda.getId()), linda);
+        studentMap.put(Integer.toString(kyle.getId()), kyle);
 
         System.out.println(studentMap.toString());
 
@@ -60,7 +60,7 @@ public class MyDriver {
     // After Java 1.8
     // https://stackoverflow.com/questions/6092642/how-to-remove-a-key-from-hashmap-while-iterating-over-it
     public static void dropUnpaidStudents(HashMap<String, Student> map) {
-        map.entrySet().removeIf(entry -> !entry.getValue().isTuitionPaid());
+        map.entrySet().removeIf(entry -> !entry.getValue().hasPaidFees());
     }
 
     // https://thispointer.com/java-remove-elements-from-hashmap-while-iterating/
@@ -68,7 +68,7 @@ public class MyDriver {
         Iterator<String> studentItr = map.keySet().iterator();
         while (studentItr.hasNext()) {
             String key = studentItr.next();
-            if (!map.get(key).isTuitionPaid()) {
+            if (!map.get(key).hasPaidFees()) {
                 studentItr.remove();
             }
         }
