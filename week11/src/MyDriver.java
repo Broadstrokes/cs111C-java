@@ -11,7 +11,7 @@ public class MyDriver {
 
 
     public static void test0() {
-        HashMap<String, Student> studentMap = new HashMap();
+        HashMap<String, Student> studentMap = new HashMap<>();
         Student harry = new Student(1, "Harry", "Stiles", false);
         Student jim = new Student(5, "Jim", "Kramer", false);
         Student konan = new Student(6, "Conan", "O' Brian", false);
@@ -34,7 +34,7 @@ public class MyDriver {
     }
 
     public static void test1() {
-        HashMap<String, Student> studentMap = new HashMap();
+        HashMap<String, Student> studentMap = new HashMap<>();
         Student harry = new Student(1, "Harry", "Stiles", false);
         Student jim = new Student(5, "Jim", "Kramer", false);
         Student konan = new Student(6, "Conan", "O' Brian", false);

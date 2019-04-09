@@ -29,17 +29,20 @@ public class Student {
 		return firstName + " " + lastName + " (ID: " + id + ")" + ( paidFees ? "" : " (Fees Owed)");
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		// YOUR CODE HERE
-		return false;
-	}
 	
 	@Override
-	public int hashCode() {
-		// YOUR CODE HERE
-		return 0;
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null || getClass() != obj.getClass()) return false;
+		Student student = (Student) obj;
+		return id == student.id &&
+				paidFees == student.paidFees &&
+				firstName.equals(student.firstName) &&
+				lastName.equals(student.lastName);
 	}
 
-
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, firstName, lastName, paidFees);
+	}
 }
