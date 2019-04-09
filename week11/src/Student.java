@@ -29,7 +29,7 @@ public class Student {
 		return firstName + " " + lastName + " (ID: " + id + ")" + ( paidFees ? "" : " (Fees Owed)");
 	}
 
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;

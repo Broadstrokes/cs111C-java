@@ -11,8 +11,7 @@ public class VoterHashTableSeparateChaining {
 	}
 	
 	public int getHashLocation(int voterID) {
-		// YOUR CODE HERE
-		return 0;
+		return voterID % tableSize;
 	}
 
 	public boolean addVoter(Voter voterToAdd) {
