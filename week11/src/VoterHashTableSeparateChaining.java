@@ -17,17 +17,17 @@ public class VoterHashTableSeparateChaining {
 	public boolean addVoter(Voter voterToAdd) {
 		int hashIndex = getHashLocation(voterToAdd.getId());
 		Node<Voter> newNode = new Node<>(voterToAdd);
+		Node<Voter> currentNode = hashTable[hashIndex];
 
-		if (hashTable[hashIndex] == null) {
+		if (currentNode == null) {
 			hashTable[hashIndex] = newNode;
 		} else {
-			Node<Voter> currentNode = hashTable[hashIndex];
 			while (currentNode != null) {
-				if (currentNode.getData().getId() == voterToAdd.getId()) {
-					System.out.println(">>>>>>>>>>>>>>>>>> Voter already present");
+				if (currentNode.getData().getId() == voterToAdd.getId()) { // completing extra credit
+					System.out.println("Voter already present");
 					return false;
 				} else if (currentNode.getNextNode() == null) {
-					currentNode.next = newNode;
+					currentNode.setNextNode(newNode);
 					return true;
 				} else {
 					currentNode = currentNode.getNextNode();
@@ -40,10 +40,10 @@ public class VoterHashTableSeparateChaining {
 
 	public Voter getVoter(int voterID) {
 		int hashIndex = getHashLocation(voterID);
-		if (hashTable[hashIndex] == null) {
+		Node<Voter> currentNode = hashTable[hashIndex];
+		if (currentNode == null) {
 			return null;
 		} else {
-			Node<Voter> currentNode = hashTable[hashIndex];
 			while (currentNode != null) {
 //				System.out.println("Looking for: " + voterID + " | Current Id: " + currentNode.getData().getId());
 				if (currentNode.getData().getId() == voterID) {
@@ -51,7 +51,7 @@ public class VoterHashTableSeparateChaining {
 				}
 				currentNode = currentNode.getNextNode();
 			}
-			System.out.println(">>>>>>>>>>>>>> Voter not found");
+			System.out.println("Voter not found");
 			return null;
 		}
 	}
