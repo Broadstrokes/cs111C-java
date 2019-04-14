@@ -46,8 +46,10 @@ public final class ArrayStack<T> implements StackInterface<T> {
     } // end peek
 
     public T peekNext() {
-        // YOUR CODE HERE
-        return null;
+        checkIntegrity();
+        if (isEmpty()) throw new EmptyStackException();
+        else if (topIndex > 0) return stack[topIndex - 1];
+        else return null;
     }
 
     public T pop() {

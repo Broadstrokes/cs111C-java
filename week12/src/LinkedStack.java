@@ -44,6 +44,12 @@ public final class LinkedStack<T> implements StackInterface<T> {
         topNode = null; // Causes deallocation of nodes in the chain
     } // end clear
 
+    public T peekNext() {
+        if (isEmpty()) throw new EmptyStackException();
+        else if (topNode.getNextNode() != null) return topNode.getNextNode().data;
+        else return null;
+    }
+
 
     @Override
     public String toString() {
