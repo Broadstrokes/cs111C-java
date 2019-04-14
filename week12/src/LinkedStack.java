@@ -50,6 +50,45 @@ public final class LinkedStack<T> implements StackInterface<T> {
         else return null;
     }
 
+    public boolean priorityPush(T element) {
+        if (!isEmpty()) {
+            if (!this.peek().equals(element)) {
+                Node previousNodeIfElementFound = this.contains(element);
+                if (previousNodeIfElementFound == null) {
+                    System.out.println("NOT FOUND IN LIST. PUSH REGULAR");
+                    this.push(element);
+                    return false;
+                } else {
+                    System.out.println("FOUND IN LIST. REMOVE & PUSH TO TOP");
+                    Node nodeToRemove = previousNodeIfElementFound.getNextNode();
+                    previousNodeIfElementFound.setNextNode(nodeToRemove.getNextNode());
+                    this.push(element);
+                    return true;
+                }
+            } else {
+                System.out.println("FOUND IN LIST - TOP NODE - DO NOTHING");
+                return true;
+            }
+        } else {
+            System.out.println("LIST EMPTY. PUSH REGULAR");
+            this.push(element);
+            return false;
+        }
+    }
+
+    private Node contains(T element) {
+        Node currentNode = topNode;
+        Node previousNode = null;
+        while (currentNode != null) {
+            if (currentNode.getData().equals(element)) {
+                return previousNode;
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.getNextNode();
+        }
+
+        return null;
+    }
 
     @Override
     public String toString() {
@@ -60,16 +99,6 @@ public final class LinkedStack<T> implements StackInterface<T> {
             current = current.next;
         }
         return s;
-    }
-
-    public boolean priorityPush(T element) {
-        // YOUR CODE HERE
-        return false;
-    }
-
-    public T peekNext() {
-        // YOUR CODE HERE
-        return null;
     }
 
     private class Node {
