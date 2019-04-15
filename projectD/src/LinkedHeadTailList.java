@@ -1,4 +1,4 @@
-public class LinkedHeadTailList<T extends Comparable<? super T>> implements HeadTailListInterface<T> {
+public class LinkedHeadTailList<T extends Comparable<? super T>> implements HeadTailListInterface<T>, Comparable<LinkedHeadTailList<T>> {
     public Node firstNode;
     public Node lastNode;
     private int numberOfEntries;
@@ -6,7 +6,36 @@ public class LinkedHeadTailList<T extends Comparable<? super T>> implements Head
     public LinkedHeadTailList() {
         initializeDataFields();
     }
+    
+    /**
+     * Compare two lists based on the following criteria
+     *     • compare the lists element-by-element
+     *     • the first time you find an element that doesn't match, compare the lists based on that element
+     *         - the list comparison is now done
+     *     • if you do not find any mismatched elements and reach the end of one or both lists,
+     *         - compare based on size (shorter list is smaller)
+     *
+     * @param otherList the other list to compare
+     * @return  return 0 if both lists are same, a positive number if 1st
+     *          mismatched element in the otherList is less than this list or other list is shorter,
+     *          a -ive number if 1st mismatched element in the otherList other list is greater
+     *          than this list or the other list is longer
+     */
+    @Override
+    public int compareTo(LinkedHeadTailList<T> otherList) {
+        Node nodeListA = firstNode;
+        Node nodeListB = otherList.firstNode;
 
+        while (nodeListA != null && nodeListB != null) {
+            if (nodeListA.getData().compareTo(nodeListB.getData()) != 0) {
+                return nodeListA.getData().compareTo(nodeListB.getData());
+            }
+            nodeListA = nodeListA.getNextNode();
+            nodeListB = nodeListB.getNextNode();
+        }
+
+        return Integer.compare(this.numberOfEntries, otherList.numberOfEntries);
+    }
 
     @Override
     public void addFront(T newEntry) {
