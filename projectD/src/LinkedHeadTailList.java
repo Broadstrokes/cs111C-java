@@ -6,7 +6,7 @@ public class LinkedHeadTailList<T extends Comparable<? super T>> implements Head
     public LinkedHeadTailList() {
         initializeDataFields();
     }
-    
+
     /**
      * Compare two lists based on the following criteria
      *     • compare the lists element-by-element
@@ -43,7 +43,7 @@ public class LinkedHeadTailList<T extends Comparable<? super T>> implements Head
 
         if (isEmpty()) {
             lastNode = newNode;
-        } else { // Add to end of nonempty list
+        } else {
             newNode.setNextNode(firstNode);
         } // end if
 
@@ -58,14 +58,12 @@ public class LinkedHeadTailList<T extends Comparable<? super T>> implements Head
         if (isEmpty()) {
             firstNode = newNode;
             lastNode = newNode;
-        }
-        else { // Add to end of nonempty list
+        } else { // Add to end of nonempty list
             lastNode.setNextNode(newNode);
             lastNode = newNode;
         } // end if
 
         numberOfEntries++;
-
     }
 
     @Override
@@ -73,14 +71,13 @@ public class LinkedHeadTailList<T extends Comparable<? super T>> implements Head
         if (!isEmpty()) {
             T entryToReturn = firstNode.getData();
             Node newFirst = firstNode.getNextNode();
-            if (numberOfEntries == 1) {
+            if (numberOfEntries == 1) { // only 1 item in list
                 lastNode = newFirst;
             }
             numberOfEntries--;
             firstNode = newFirst;
             return entryToReturn;
-        }
-        else { // Add to end of nonempty list
+        } else { // list has no items
             return null;
         } // end if
     }
@@ -89,18 +86,24 @@ public class LinkedHeadTailList<T extends Comparable<? super T>> implements Head
     public T removeBack() {
         Node currentNode = firstNode;
         Node previousNode = null;
-        while (currentNode != null && currentNode.getNextNode() != null) {
-            previousNode = currentNode;
-            currentNode = currentNode.getNextNode();
-        }
-
-        if (previousNode != null) previousNode.next = null;
-        if (currentNode != null) {
-            numberOfEntries--;
-            lastNode = previousNode;
-            return currentNode.getData();
-        } else {
-            return null;
+        T entryToReturn = null;
+        if (!isEmpty()) {
+            if (numberOfEntries == 1) { // only 1 item in list
+                entryToReturn = currentNode.getData();
+                initializeDataFields();
+                return entryToReturn;
+            } else { // list has more than 1 items
+                while (currentNode != null && currentNode.getNextNode() != null) {
+                    previousNode = currentNode;
+                    currentNode = currentNode.getNextNode();
+                }
+                previousNode.next = null;
+                lastNode = previousNode;
+                numberOfEntries--;
+                return currentNode.getData();
+            }
+        } else { // list has no items
+            return entryToReturn;
         }
     }
 
