@@ -45,7 +45,7 @@ public class HomeworkM12FolderDriver {
         topFolder.addFolder(folder3);
         topFolder.addFolder(folder4);
 
-        printFolderContentsRecursive(topFolder);
+//        printFolderContentsRecursive(topFolder);
         DriverUtil.printDashes();
         DriverUtil.printDashes();
         DriverUtil.printDashes();
