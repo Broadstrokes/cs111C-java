@@ -46,6 +46,10 @@ public class HomeworkM12FolderDriver {
         topFolder.addFolder(folder4);
 
         printFolderContentsRecursive(topFolder);
+        DriverUtil.printDashes();
+        DriverUtil.printDashes();
+        DriverUtil.printDashes();
+        DriverUtil.printDashes();
         printFolderContentsWithStack(topFolder);
 
     }
@@ -76,12 +80,46 @@ public class HomeworkM12FolderDriver {
 
     }
 
+    /**
+     * Print folder structure using a stack
+     * @param topFolder root folder
+     */
     public static void printFolderContentsWithStack(Folder topFolder) {
         Stack<Folder> folderStack = new Stack<Folder>();
+        Stack<Integer> levelStack = new Stack<Integer>();
         folderStack.push(topFolder);
-
+        levelStack.push(0);
         while (!folderStack.isEmpty()) {
+            Folder currentFolder = folderStack.pop();
+            Integer level = levelStack.pop();
 
+            for (int i = 0; i < level; i++) {
+                System.out.print("   ");
+            }
+
+            System.out.println(currentFolder); // print current folder name
+
+            List<File> fileList = currentFolder.getFileList();
+
+            if (fileList.size() > 0) {
+                for (int i = 0; i < level + 1; i++) {
+                    System.out.print("   ");
+                }
+                System.out.println(fileList); // print file names;
+            }
+
+            List<Folder> subfolderList = currentFolder.getFolderList();
+
+            if (subfolderList.size() > 0) {
+                Stack<Folder> tempStack = new Stack<>();
+                for (Folder subfolder : subfolderList) {
+                    tempStack.push(subfolder);
+                }
+                while(!tempStack.empty()) {
+                    folderStack.push(tempStack.pop());
+                    levelStack.push(level + 1);
+                }
+            }
         }
     }
 
