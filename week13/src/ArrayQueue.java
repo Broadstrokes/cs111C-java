@@ -90,7 +90,11 @@ public final class ArrayQueue<T> implements QueueInterface<T> {
     }
 
     public void splice(ArrayQueue<T> anotherQueue) {
-        // YOUR CODE HERE
+        if (!anotherQueue.isEmpty()) {
+            for (int index = anotherQueue.frontIndex; index != anotherQueue.backIndex + 1; index = (index + 1) % anotherQueue.queue.length) {
+                this.enqueue(anotherQueue.queue[index]);
+            }
+        }
     }
 
     // Throws an exception if this object is not initialized.
