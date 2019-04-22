@@ -64,7 +64,11 @@ public final class LinkedQueue<T> implements QueueInterface<T> {
     }
 
     public void splice(LinkedQueue<T> anotherQueue) {
-        // YOUR CODE HERE!
+        Node currentNode = anotherQueue.firstNode;
+        while (currentNode != null) {
+            this.enqueue(currentNode.getData());
+            currentNode = currentNode.getNextNode();
+        }
     }
 
     private class Node {
