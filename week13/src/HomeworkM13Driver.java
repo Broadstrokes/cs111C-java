@@ -1,35 +1,36 @@
 import java.util.*;
 
+@SuppressWarnings("Duplicates")
 public class HomeworkM13Driver {
 
     public static void main(String[] args) {
 
-//        System.out.println("*****TESTING CLIENT VIEW SPLICE");
-//        QueueInterface<Integer> q1 = new LinkedQueue<Integer>();
-//        QueueInterface<Integer> q2 = new LinkedQueue<Integer>();
-//        splice(q1, q2);
-//        System.out.println("q1 empty: \ntrue\n" + q1.isEmpty());
-//        System.out.println("q2 empty: \ntrue\n" + q2.isEmpty());
-//        q1.enqueue(4);
-//        q1.enqueue(8);
-//        q1.enqueue(9);
-//        q1.enqueue(2);
-//        splice(q1, q2);
-//        System.out.println("\nq1 contains: \n4 8 9 2");
-//        ((LinkedQueue<Integer>) q1).display();
-//        System.out.println("q2 still empty: \ntrue\n" + q2.isEmpty());
-//
-//        q2.enqueue(1);
-//        q2.enqueue(3);
-//        q2.enqueue(7);
-//        q2.enqueue(6);
-//        q2.enqueue(3);
-//        q2.enqueue(1);
-//        splice(q1, q2);
-//        System.out.println("\nq1 contains: \n4 8 9 2 1 3 7 6 3 1");
-//        ((LinkedQueue<Integer>) q1).display();
-//        System.out.println("q2 still contains: \n1 3 7 6 3 1");
-//        ((LinkedQueue<Integer>) q2).display();
+        System.out.println("*****TESTING CLIENT VIEW SPLICE");
+        QueueInterface<Integer> q1 = new LinkedQueue<Integer>();
+        QueueInterface<Integer> q2 = new LinkedQueue<Integer>();
+        splice(q1, q2);
+        System.out.println("q1 empty: \ntrue\n" + q1.isEmpty());
+        System.out.println("q2 empty: \ntrue\n" + q2.isEmpty());
+        q1.enqueue(4);
+        q1.enqueue(8);
+        q1.enqueue(9);
+        q1.enqueue(2);
+        splice(q1, q2);
+        System.out.println("\nq1 contains: \n4 8 9 2");
+        ((LinkedQueue<Integer>) q1).display();
+        System.out.println("q2 still empty: \ntrue\n" + q2.isEmpty());
+
+        q2.enqueue(1);
+        q2.enqueue(3);
+        q2.enqueue(7);
+        q2.enqueue(6);
+        q2.enqueue(3);
+        q2.enqueue(1);
+        splice(q1, q2);
+        System.out.println("\nq1 contains: \n4 8 9 2 1 3 7 6 3 1");
+        ((LinkedQueue<Integer>) q1).display();
+        System.out.println("q2 still contains: \n1 3 7 6 3 1");
+        ((LinkedQueue<Integer>) q2).display();
 //
 //        System.out.println("\n\n*****TESTING ARRAYQUEUE SPLICE");
 //        ArrayQueue<String> wordQueue1 = new ArrayQueue<String>();
@@ -112,11 +113,60 @@ public class HomeworkM13Driver {
 //        lq2.display();
 
 
-        test0();
+//        test0();
+//        test1();
     }
 
+//    public static void test2() {
+//        pq1.add(1d) // pq1: 1d
+//        pq1.add(2e) // pq1: 1d, 2e
+//        pq1.add(1a) // pq1: 1d, 1a, 2e
+//        pq1.add(2a) // pq1: 1d, 1a, 2e, 2a
+//        pq1.add(1c) // pq1: 1d, 1a, 1c, 2e, 2a
+//        pq1.add(1e); // pq1: 1d, 1a, 1c, 1e, 2e, 2a
+//        pq1.remove() // pq1: 1a, 1c, 1e, 2e, 2a
+//        pq1.add(pq1.remove()) // pq1: 1c, 1e, 1a, 2e, 2a
+//        pq1.add(pq1.getFront()) // pq1: 1c, 1e, 1a, 1c, 2e, 2a
+//        pq1.remove() // pq1: 1e, 1a, 1c, 2e, 2a
+//        pq1.remove() // pq1: 1a, 1c, 2e, 2a
+//        pq1.remove(); // pq1: 1c, 2e, 2a
+//        pq1.remove(); // pq1: 2e, 2a
+//    }
+    public static void test1() {
+        DriverUtil.printDashes();
+        DriverUtil.printNameOfCurrMethod();
+        DriverUtil.printDashes();
+
+        DequeInterface<String> dq1 = new LinkedDeque<String>();
+        DequeInterface<String> dq2 = new LinkedDeque<String>();
+        dq1.addToFront("x"); // dq1: x
+        dq1.addToFront("y"); // dq1: yx
+        dq1.addToBack("z"); // dq1: yxz
+        dq2.addToFront("a"); // dq1: yxz | dq2: a
+        dq2.addToBack("b"); // dq1: yxz | dq2: ab
+        dq2.addToBack(dq1.removeBack()); // dq1: yx | dq2: abz
+        dq1.addToFront(dq2.getBack()); // dq1: zyx | dq2: abz
+        dq1.addToFront(dq2.getBack()); // dq1: zzyx | dq2: abz
+        dq2.addToFront(dq2.removeFront()); // dq1: zzyx | dq2: abz
+        dq1.addToBack(dq2.getFront()); // dq1: zzyxa | dq2: abz
+        dq2.addToBack(dq2.removeFront()); // dq1: azzyxa | dq2: bza
+
+        String dq1String = "";
+        while(!dq1.isEmpty()) {
+            dq1String += dq1.removeFront();
+        }
+        String dq2String = "";
+        while(!dq2.isEmpty()) {
+            dq2String += dq2.removeFront();
+        }
+
+        DriverUtil.println("DQ1: " + dq1String);
+        DriverUtil.println("DQ2: " + dq2String);
+
+    }
 
     public static void test0(){
+        DriverUtil.printDashes();
         DriverUtil.printNameOfCurrMethod();
         DriverUtil.printDashes();
 
@@ -158,7 +208,7 @@ public class HomeworkM13Driver {
     // warnings so you can focus on the queue logic
     @SuppressWarnings({"rawtypes", "unchecked"})
     public static void splice(QueueInterface firstQueue, QueueInterface secondQueue) {
-        // YOUR CODE HERE
+        
     }
 
 }
