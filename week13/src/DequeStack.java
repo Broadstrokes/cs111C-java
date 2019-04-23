@@ -1,28 +1,32 @@
 public class DequeStack<T> implements StackInterface<T> {
     private DequeInterface<T> deque;
 
+    public DequeStack() {
+        this.deque = new LinkedDeque<>();
+    }
+
     @Override
     public void push(T newEntry) {
-
+        deque.addToBack(newEntry);
     }
 
     @Override
     public T pop() {
-        return null;
+        return deque.removeBack();
     }
 
     @Override
     public T peek() {
-        return null;
+        return deque.getBack();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return deque.isEmpty();
     }
 
     @Override
     public void clear() {
-
+        deque.clear();
     }
 }
