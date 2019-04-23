@@ -115,6 +115,35 @@ public class HomeworkM13Driver {
 
 //        test0();
 //        test1();
+        test3();
+    }
+
+
+    public static void test3() {
+        DequeStack<String> stack = new DequeStack<>();
+
+        stack.push("ant");
+        stack.push("bear");
+        stack.push("cat");
+        stack.push("dog");
+        stack.push("elephant");
+
+        while(!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
+        System.out.println();
+
+        stack.push("ant");
+        stack.push("bear");
+        stack.push("cat");
+        stack.push("dog");
+        stack.push("elephant");
+        stack.push("frog");
+        stack.push("giraffe");
+
+        while(!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
     }
 
 //    public static void test2() {
@@ -132,6 +161,7 @@ public class HomeworkM13Driver {
 //        pq1.remove(); // pq1: 1c, 2e, 2a
 //        pq1.remove(); // pq1: 2e, 2a
 //    }
+
     public static void test1() {
         DriverUtil.printDashes();
         DriverUtil.printNameOfCurrMethod();
