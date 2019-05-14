@@ -56,7 +56,17 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 		BinaryNode<T> currentNode = getRootNode();
 
 		// consider a loop!
-		
+		while (currentNode != null) {
+			int comparison = target.compareTo(currentNode.getData());
+			if (comparison == 0) { count++; }
+
+			if (comparison <= 0) { // traverse left side
+				currentNode = currentNode.getLeftChild();
+			} else if (comparison > 0) { // traverse right side
+				currentNode = currentNode.getRightChild();
+			}
+		}
+
 		return count;
 	}
 
