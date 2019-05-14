@@ -99,11 +99,23 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	public int countGreaterWithStack(T target) {
 		// this initial code is meant as a suggestion to get your started- use it or delete it!
 		int count = 0;
-		BinaryNode<T> rootNode = getRootNode();
+		BinaryNode<T> currentNode = getRootNode();
 		Stack<BinaryNode<T>> nodeStack = new Stack<BinaryNode<T>>();
-		nodeStack.push(rootNode);
+		nodeStack.push(currentNode);
 
 		// consider a loop based on the stack!
+		while (!nodeStack.empty()) {
+			currentNode = nodeStack.pop();
+			int comparison = target.compareTo(currentNode.getData());
+
+			if (comparison < 0) count++;
+			if (currentNode.hasLeftChild()) {
+				nodeStack.push(currentNode.getLeftChild());
+			}
+			if (currentNode.hasRightChild()) {
+				nodeStack.push(currentNode.getRightChild());
+			}
+		}
 		return count;
 	}
 		
