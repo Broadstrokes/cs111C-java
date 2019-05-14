@@ -1,5 +1,6 @@
 import java.util.*;
 
+@SuppressWarnings("Duplicates")
 public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends BinarySearchTree<T>
 		implements SearchTreeInterface<T>, java.io.Serializable {
 
@@ -122,7 +123,26 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	// YOUR EXTRA CREDIT CODE HERE! THIS METHOD MUST BE O(n). 
 	// YOU ARE ALLOWED TO USE A HELPER METHOD. THE METHOD CAN BE ITERATIVE OR RECURSIVE. 
 	public int countUniqueValues() {
-		return 0;
+		int count = 0;
+		BinaryNode<T> currentNode = getRootNode();
+		Set<T> set = new HashSet<>();
+		Stack<BinaryNode<T>> nodeStack = new Stack<BinaryNode<T>>();
+		nodeStack.push(currentNode);
+
+
+		while (!nodeStack.empty()) {
+			currentNode = nodeStack.pop();
+			set.add(currentNode.getData());
+
+			if (currentNode.hasLeftChild()) {
+				nodeStack.push(currentNode.getLeftChild());
+			}
+			if (currentNode.hasRightChild()) {
+				nodeStack.push(currentNode.getRightChild());
+			}
+		}
+
+		return set.size();
 	}
 	
 	
