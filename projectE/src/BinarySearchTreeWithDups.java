@@ -77,8 +77,20 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 		int count = 0;
 		BinaryNode<T> rootNode = getRootNode();
 		
-		// consider a helper method!
-		
+		return countGreaterRecursiveHelper(target, rootNode, count);
+	}
+
+	private int countGreaterRecursiveHelper(T target, BinaryNode<T> node, int count) {
+		int comparison = target.compareTo(node.getData());
+//		if (target.equals(10))
+//			System.out.println(">>>>>>>>>" + target.toString() + " " + node.getData());
+			if (comparison < 0) count++;
+			if (node.hasLeftChild()) {
+				count = countGreaterRecursiveHelper(target, node.getLeftChild(), count);
+			}
+			if (node.hasRightChild()) {
+				count = countGreaterRecursiveHelper(target, node.getRightChild(), count);
+			}
 		return count;
 	}
 		
