@@ -83,15 +83,16 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 
 	private int countGreaterRecursiveHelper(T target, BinaryNode<T> node, int count) {
 		int comparison = target.compareTo(node.getData());
-//		if (target.equals(10))
-//			System.out.println(">>>>>>>>>" + target.toString() + " " + node.getData());
 			if (comparison < 0) count++;
-			if (node.hasLeftChild()) {
-				count = countGreaterRecursiveHelper(target, node.getLeftChild(), count);
+			if (comparison <= 0) {
+				if (node.hasLeftChild()) {
+					count = countGreaterRecursiveHelper(target, node.getLeftChild(), count);
+				}
 			}
 			if (node.hasRightChild()) {
 				count = countGreaterRecursiveHelper(target, node.getRightChild(), count);
 			}
+
 		return count;
 	}
 		
@@ -110,12 +111,15 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 			int comparison = target.compareTo(currentNode.getData());
 
 			if (comparison < 0) count++;
-			if (currentNode.hasLeftChild()) {
-				nodeStack.push(currentNode.getLeftChild());
+			if (comparison <= 0) {
+				if (currentNode.hasLeftChild()) {
+					nodeStack.push(currentNode.getLeftChild());
+				}
 			}
 			if (currentNode.hasRightChild()) {
 				nodeStack.push(currentNode.getRightChild());
 			}
+
 		}
 		return count;
 	}
